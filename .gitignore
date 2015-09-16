@@ -1,0 +1,16 @@
+Lib/cakephp-lib
+Config/appConfigPrivate.php
+
+tmp/cache/models/myapp*
+tmp/cache/persistent/myapp*
+tmp/cache/group_b/*
+tmp/tests*
+
+*~
+
+Console/error_log
+
+webroot/php.ini
+webroot/error_log
+tmp/logs/error.log
+tmp/logs/debug.log
