@@ -1,5 +1,4 @@
-Conference List Web App
------------------------
+Simple Conference Web App
 
 https://github.com/nilesjohnson/simple-conference
 
@@ -29,7 +28,7 @@ the license.
 DESCRIPTION
 -----------
 
-Simple Conference is a web application for a simple conference website.
+Simple Conference is a web application for a lightweight conference website.
 Its basic functions are:
 
 * Static page(s) to display conference info.
