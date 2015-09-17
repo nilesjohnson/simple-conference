@@ -30,7 +30,6 @@ function gcal_link($start,$end,$title,$location) {
 
 
 <div class="intro_text">
-<p>This is the top page.  It just has links to the other pages.</p>
 </div>
 
 
@@ -52,6 +51,60 @@ function gcal_link($start,$end,$title,$location) {
 <hr/>
 <h1><?php echo $view_title; ?></h1>
 
-<p><?php echo $this->Html->link('List all registrants', array('action' => 'all'), array('id' => 'list-all'));?></p>
 
-<p><?php echo $this->Html->link('Register', array('action' => 'add'), array('class' => 'button', 'id' => 'add-button'));?></p>
+
+<?php 
+$site_url = Configure::read('site.home');
+$site_name = Configure::read('site.name');
+foreach ($registrants as $registrant):
+
+echo '<h3 class="title">'.
+   '<a href="'.
+   $registrant['Registrant']['webpage'].
+   '" target="reg_blank">'.
+   $registrant['Registrant']['name'].
+   '</a>'
+   ;
+echo '</h3>';
+echo '<div class="registrant">'.
+   '</div>';
+
+
+endforeach; 
+
+
+?>
+
+
+
+
+
+
+
+
+<?php
+//just added some basic Paginator sorts to give you an idea
+echo '<div>';
+//notice clicking this will change from ASC to DESC it also changes the class name so you can draw a little arrow. Check out the default CakePHP CSS you'll see it
+echo $this->Paginator->sort('name').'<br/>';
+echo $this->Paginator->sort('date').'<br/>';
+echo $this->Paginator->sort('affiliation').'<br/>';
+     echo $this->Paginator->counter(array(
+     'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+     )).'<br />';
+     	     echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled')).' ';
+	     	  echo $this->Paginator->numbers(array('separator' => ' | '));
+		       echo ' '.$this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+echo '</div>';
+?>
+
+
+
+
+
+
+
+
+
+
+

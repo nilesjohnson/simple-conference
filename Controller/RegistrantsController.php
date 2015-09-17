@@ -39,8 +39,8 @@ class RegistrantsController extends AppController {
 
     if (!(empty($this->data))) {
       if (array_key_exists('Registrant',$this->data)) {
-	CakeLog::write('debug',"title: ".$this->data['Registrant']['title']);
-	CakeLog::write('debug',"contact_email: ".$this->data['Registrant']['contact_email']);
+	CakeLog::write('debug',"name: ".$this->data['Registrant']['name']);
+	CakeLog::write('debug',"email: ".$this->data['Registrant']['email']);
 	CakeLog::write('debug',"captcha: ".$this->data['Registrant']['captcha']);
       }
       else {
@@ -55,10 +55,13 @@ class RegistrantsController extends AppController {
     }
   }
 
-  public function index($sort_condition=Null) {
-    $this->set('view_title','title');
-    $this->set('months', $this->months);
+  public function index($s=Null) {
+    $this->set('view_title','index');
+  }
 
+  public function all($sort_condition=Null) {
+    // show all registrants
+    $this->set('view_title','current registrants');
     $this->Paginator->settings = $this->paginate;
 
     // find database entries
@@ -87,7 +90,7 @@ class RegistrantsController extends AppController {
     $this->set('view_title', 'Add');
     if (!empty($this->data)) {
       // set model data
-      //debug($this->data);  //displays array info
+      debug($this->data);  //displays array info
       $this->Registrant->set($this->data);
 
       // test whether registrant and cc data validates
@@ -120,6 +123,7 @@ class RegistrantsController extends AppController {
 	$this->Registrant->invalidate('captcha','Please perform the indicated arithmetic.');
 	$this->Session->setFlash('Please check for errors below.', 'FlashBad');
       }
+      $this->render('addedit');
     }
 
     /*
@@ -134,6 +138,7 @@ class RegistrantsController extends AppController {
     }
     */
     $this->set('mathCaptcha', $this->MathCaptcha->generateEquation());
+    $this->render('addedit');
   }
 
 
@@ -168,6 +173,7 @@ class RegistrantsController extends AppController {
       throw new NotFoundException(__('Invalid registrant'));
     }
     $this->Registrant->id = $id;
+    $this->set('edit',1);
     if (empty($this->data)) {
       $this->data = $this->Registrant->read();
       $this->request->data['Registrant']['passed_key'] = $key;
@@ -177,6 +183,7 @@ class RegistrantsController extends AppController {
 	$this->Session->SetFlash('Invalid edit key. (2)','FlashBad');
 	$this->redirect(array('action' => 'index'));
       }
+      $this->render('addedit');
     } 
     else {
       // check that given key matches key from database
