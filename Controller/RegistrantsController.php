@@ -74,6 +74,25 @@ class RegistrantsController extends AppController {
     }
   }
 
+  public function adminall($key = Null) {
+    // show all registrants
+    if ($key != Configure::read('site.admin_key')) {
+      $this->Session->SetFlash('Invalid admin key.','FlashBad');
+      $this->redirect(array('action' => 'index'));
+    }
+    $this->set('view_title','administrator\'s list');
+    $this->Paginator->settings = $this->paginate;
+
+    // find database entries
+    //$find_array = array('conditions' => $conditions, 'order' => $order_array);    
+    $this->set('registrants', $this->Paginator->paginate('Registrant'));
+
+    // process RSS feed      
+    if( $this->RequestHandler->isRss() ){
+      $this->set(compact('registrants'));
+    }
+  }
+
 
   
 
@@ -131,6 +150,10 @@ class RegistrantsController extends AppController {
     $this->set('edit',1);
     if (empty($this->data)) {
       $this->data = $this->Registrant->read();
+      // allow admin key: if given, set $key to correct edit key
+      if ($key == Configure::read('site.admin_key')) {
+	$key = $this->data['Registrant']['edit_key'];
+      }
       $this->request->data['Registrant']['passed_key'] = $key;
       debug($this->data);
 
@@ -146,7 +169,7 @@ class RegistrantsController extends AppController {
       $prev = $this->Registrant->find('first', array(
           'conditions' => array('Registrant.id' => $id)
       ));
-      if ($key != $prev['Registrant']['edit_key']) {
+      if ($key != $prev['Registrant']['edit_key'] && $key != Configure::read('site.admin_key')) {
         $this->Session->SetFlash('Invalid edit key. (1)','FlashBad');
         $this->redirect(array('action' => 'index'));
       }
