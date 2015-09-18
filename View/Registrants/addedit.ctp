@@ -7,11 +7,14 @@ $addedit='Edit';
 echo '<h1>'.$addedit.' Registration Information</h1>';
 
 echo $this->Form->create('Registrant');
+if (isset($edit)){
+   echo $this->Form->input('id');
+   echo $this->Form->input('edit_key', array('type'=>'hidden'));
+}
 
 echo '<h2>Basic Information</h2>';
 echo '<div id="basic-info" style="border:1px solid #333; background-color:#efe">';
 echo $this->Form->input('name');
-//echo $this->Form->input('edit_key', array('type'=>'hidden'));
 echo $this->Form->input('webpage', array('required' => false));
 echo $this->Form->input('affiliation');
 echo $this->Form->input('request_a', array('label' => 'Display basic info (name, webpage, affiliation) on public list of registrants.', 'default' => true));

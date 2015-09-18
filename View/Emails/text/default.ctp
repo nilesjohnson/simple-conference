@@ -40,9 +40,9 @@ echo $registrant['Registrant']['date']."\n";
 
 echo "Basic Information\n";
 echo "----\n";
-echo $registrant['Registrant']['name']."\n";
-echo $registrant['Registrant']['webpage']."\n";
-echo $registrant['Registrant']['affiliation']."\n";
+echo "Name: ".$registrant['Registrant']['name']."\n";
+echo "Webpage: ".$registrant['Registrant']['webpage']."\n";
+echo "Affiliation: ".$registrant['Registrant']['affiliation']."\n";
 echo "List basic info publicly: ";
 echo $registrant['Registrant']['request_a'] ? 'true':'false';
 echo "\n\n";

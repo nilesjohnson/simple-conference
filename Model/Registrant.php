@@ -91,13 +91,15 @@ class Registrant extends AppModel {
     // add http:// if not present in webpage
     $webpage = $this->data['Registrant']['webpage'];
     $V = new Validation();
-    if (!$webpage && $V->url($webpage) && !$V->url($webpage,true)) {
+    if (!empty($webpage) && $V->url($webpage) && !$V->url($webpage,true)) {
       $this->data['Registrant']['webpage'] = 'http://'.$webpage;
     }
     
     // generate edit key
-    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";	
-    $this->data['Registrant']['edit_key'] = substr( str_shuffle( $chars ), 0, 8);
+    if (empty($this->data['Registrant']['edit_key'])) {
+      $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";	
+      $this->data['Registrant']['edit_key'] = substr( str_shuffle( $chars ), 0, 8);
+    }
     return true;
   }
 

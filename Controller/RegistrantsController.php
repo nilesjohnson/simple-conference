@@ -132,7 +132,7 @@ class RegistrantsController extends AppController {
     if (empty($this->data)) {
       $this->data = $this->Registrant->read();
       $this->request->data['Registrant']['passed_key'] = $key;
-      //debug($this->data);
+      debug($this->data);
 
       if ($key != $this->data['Registrant']['edit_key']) {
 	$this->Session->SetFlash('Invalid edit key. (2)','FlashBad');
