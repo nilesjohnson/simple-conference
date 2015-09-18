@@ -155,7 +155,7 @@ class RegistrantsController extends AppController {
 	$key = $this->data['Registrant']['edit_key'];
       }
       $this->request->data['Registrant']['passed_key'] = $key;
-      debug($this->data);
+      //debug($this->data);
 
       if ($key != $this->data['Registrant']['edit_key']) {
 	$this->Session->SetFlash('Invalid edit key. (2)','FlashBad');
@@ -215,7 +215,7 @@ class RegistrantsController extends AppController {
     $Email->from(array(Configure::read('site.host_email') => Configure::read('site.name')));
     $Email->to($this->data['Registrant']['email']);
     $Email->bcc(Configure::read('site.admin_email'));
-    $Email->subject(Configure::read('site.name') . " Registration: " . $this->data['Registrant']['name']);
+    $Email->subject("Registration for " . $this->data['Registrant']['name']);
     if (!is_null($id)) {
       $this->set('registrant',$this->data);
       $this->render('../Emails/text/default','Emails/text/default');
