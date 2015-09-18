@@ -55,24 +55,32 @@ class Registrant extends AppModel {
 
   public $validate = array(
 			   'name' => array(
-			  		    'rule' => 'notEmpty'
+					   'rule' => 'notEmpty'
 					   ),
-			//'institution' => array(
-			//'rule' => 'notEmpty',
-			//'message' => 'testing institution'
-			//),
-			'webpage' => array(
-					    'rule' => array('url',true),
-					    'message' => 'Please supply a valid and complete url.'
+			   //'institution' => array(
+			   //'rule' => 'notEmpty',
+			   //'message' => 'testing institution'
+			   //),
+			   'webpage' => array(
+					      'rule' => 'emptyOrUrl',
+					      'message' => 'Please supply a valid url or leave blank.',
+					      ),
+			   'email' => array(
+					    'rule' => 'email',
+					    'message' => 'Please supply a valid email address; this will never be displayed publicly.'
 					    ),
-			'email' => array(
-						 'rule' => 'email',
-						 'message' => 'Please supply a valid email address; this will never be displayed publicly.'
-						 ),
-			'captcha' => array(
-					   'rule' => 'notEmpty',
-					   ),
-			);
+			   'captcha' => array(
+					      'rule' => 'notEmpty',
+					      ),
+			   );
+
+  function emptyOrUrl($input) {
+    if (!$input['webpage']) {
+      return true;
+    }
+    $V = new Validation();
+    return $V->url($input['webpage']);
+  }
 
   public function notEqualTo($input,$value) {
     $input_values = array_values($input);
@@ -80,6 +88,14 @@ class Registrant extends AppModel {
   }
 
   public function beforeSave($options = array()) {
+    // add http:// if not present in webpage
+    $webpage = $this->data['Registrant']['webpage'];
+    $V = new Validation();
+    if (!$webpage && $V->url($webpage) && !$V->url($webpage,true)) {
+      $this->data['Registrant']['webpage'] = 'http://'.$webpage;
+    }
+    
+    // generate edit key
     $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";	
     $this->data['Registrant']['edit_key'] = substr( str_shuffle( $chars ), 0, 8);
     return true;

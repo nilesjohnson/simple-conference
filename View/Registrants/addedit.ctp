@@ -1,25 +1,23 @@
-
-<?php
-// calendar date picker
-
-$this->Html->script('jquery-ui-1.8.10.custom/js/jquery-1.4.4.min',array('inline'=>false));
-$this->Html->script('jquery-ui-1.8.10.custom/js/jquery-ui-1.8.10.custom.min',array('inline'=>false));
-$this->Html->css('jquery-ui-1.8.10.custom-css/jquery-ui-1.8.10.custom',array('inline'=>false));
-$this->Html->script('datepicker',array('inline'=>false));
-
-?>
-
-
-<h1>Add Meeting Information</h1>
+<h1>Registration Form</h1>
 
 <?php 
 echo $this->Form->create('Registrant');
+
+echo '<h2>Basic Information</h2>';
+echo '<div id="basic-info" style="border:1px solid #333; background-color:#efe">';
 echo $this->Form->input('name');
 //echo $this->Form->input('edit_key', array('type'=>'hidden'));
-echo $this->Form->input('webpage');
+echo $this->Form->input('webpage', array('required' => false));
 echo $this->Form->input('affiliation');
-echo $this->Form->input('email', array('after'=>'never displayed publicly; confirmation and edit/delete codes will be sent to this address'));
+echo $this->Form->input('request_a', array('label' => 'Display basic info (name, webpage, affiliation) on public list of registrants.', 'default' => true));
+echo '</div>';
+
+echo '<h2>Additional Information</h2>';
+echo '<div id="basic-info" style="border:1px solid #333; background-color:#eef">';
+echo $this->Form->input('email', array('after'=>'Never displayed publicly.  Confirmation and other correspondence will be sent to this address.'));
+echo $this->Form->input('request_b', array('label' => 'Request funding.  If you request funding, please use the comment section to say whether you are a graduate student, postdoc, etc., and any other relevant information.'));
 echo $this->Form->input('comment', array('rows' => '10'));
+echo '</div>';
 ?>
 
 
