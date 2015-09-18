@@ -93,7 +93,7 @@ class RegistrantsController extends AppController {
       debug($this->data);  //displays array info
       $this->Registrant->set($this->data);
 
-      // test whether registrant and cc data validates
+      // test whether registrant data validates
       $valid_data = true;
       // check for invalid registrant data
       if (!($this->Registrant->validates($this->data['Registrant']))) {
@@ -104,21 +104,13 @@ class RegistrantsController extends AppController {
 	$this->Session->setFlash('Please check for errors below.', 'FlashBad');
 	$valid_data = false;
       }      
-      // if registrant and cc data validates, check for valid captcha
-      if ($valid_data && $this->MathCaptcha->validates($this->data['Registrant']['captcha'])) {
 
-	// verify that all data saves, and send email(s)
-	if ($this->Registrant->save($this->data)) {
-	  $this->request->data = $this->Registrant->read();
-	  $Email = $this->prepEmail();
-	  $Email->send();
-	  $this->Session->setFlash('Your registrant information has been saved.  An email with edit/delete links has been sent to the contact address.', 'FlashGood');
-	  if ($this->ccdata['to'] != '') {
-	    $this->Session->setFlash('Your registrant information has been saved.  An email with edit/delete links has been sent to the contact address, and a separate announcement has been sent to the given addresses.', 'FlashGood');
-	  }
-	  $this->redirect(array('action' => 'index'));
-	}
+      // after registrant data validates, check for valid captcha
+      if ($valid_data && $this->MathCaptcha->validates($this->data['Registrant']['captcha'])) {
+	// all good!
+	$this->saveAndSend();
       }
+      // else: something invalid
       else {
 	$this->Registrant->invalidate('captcha','Please perform the indicated arithmetic.');
 	$this->Session->setFlash('Please check for errors below.', 'FlashBad');
@@ -126,46 +118,9 @@ class RegistrantsController extends AppController {
       $this->render('addedit');
     }
 
-    /*
-    $defaults = array('subject_area' => 'algebraic topology',
-		      'meeting_type' => 'registrant',
-		      'homepage' => 'http://',
-		      );
-    foreach ($defaults as $key => $value) {
-      if (empty($this->data['Registrant'][$key])) {
-	$this->request->data['Registrant'][$key] = $value;
-      }
-    }
-    */
+    // if there is no data: generate a fresh form
     $this->set('mathCaptcha', $this->MathCaptcha->generateEquation());
     $this->render('addedit');
-  }
-
-
-
-  public function prepEmail($id = null) {
-    $Email = new CakeEmail();
-    if (!is_null($id)) {
-      $this->Registrant->id = $id;
-      if (!$this->Registrant->exists($id)) {
-	throw new NotFoundException(__('Invalid registrant (3)'));
-      }
-      $this->data = $this->Registrant->read();
-    }
-    $Email->viewVars(array('registrant' => $this->data));
-    $Email->template('default','default')
-      ->emailFormat('text');
-    $Email->from(array(Configure::read('site.host_email') => Configure::read('site.name')));
-    $to_array = preg_split("/[\s,]+/",$this->data['Registrant']['contact_email']);
-    $Email->to($to_array);
-    $Email->bcc(Configure::read('site.admin_email'));
-    $Email->subject(Configure::read('site.name') . ": " . $this->data['Registrant']['title']);
-    if (!is_null($id)) {
-      $this->set('registrant',$this->data);
-      $this->render('../Emails/text/default','Emails/text/default');
-      return null;
-    }
-    return $Email;
   }
 
   public function edit($id = null, $key = null) {
@@ -183,6 +138,7 @@ class RegistrantsController extends AppController {
 	$this->Session->SetFlash('Invalid edit key. (2)','FlashBad');
 	$this->redirect(array('action' => 'index'));
       }
+      $this->set('mathCaptcha', $this->MathCaptcha->generateEquation());
       $this->render('addedit');
     } 
     else {
@@ -194,17 +150,56 @@ class RegistrantsController extends AppController {
         $this->Session->SetFlash('Invalid edit key. (1)','FlashBad');
         $this->redirect(array('action' => 'index'));
       }
-      if ($this->Registrant->save($this->data)) {
-	$this->request->data = $this->Registrant->read();
-	$Email = $this->prepEmail();
-	$Email->send();
-
-	$this->Session->setFlash('Your registrant announcement has been updated.  An email with the new edit/delete links has been sent to the contact address.','FlashGood');
-	$this->redirect(array('action' => 'index'));
-      }
+      // all good!
+      $this->saveAndSend();
     }
   }
   
+
+
+  public function saveAndSend() {
+    /*
+     * helper function to save data and send email
+     * ends with redirect
+     */
+    // change any 2-digit years in start/end dates to 4-digit years
+    
+    // verify that all data saves, and send email(s)
+    if ($this->Registrant->save($this->data)) {
+      $this->request->data = $this->Registrant->read();
+      $Email = $this->prepEmail();
+      $Email->send();
+      $this->Session->setFlash('Your registration information has been saved.  An email with edit/delete links has been sent to the contact address.', 'FlashGood');
+      $this->redirect(array('action' => 'index'));
+    } 
+    else {
+      $this->Session->setFlash('There was an error saving the data.  Please re-register.','FlashBad');
+    }
+  }
+
+  public function prepEmail($id = null) {
+    $Email = new CakeEmail();
+    if (!is_null($id)) {
+      $this->Registrant->id = $id;
+      if (!$this->Registrant->exists($id)) {
+	throw new NotFoundException(__('Invalid registrant (3)'));
+      }
+      $this->data = $this->Registrant->read();
+    }
+    $Email->viewVars(array('registrant' => $this->data));
+    $Email->template('default','default')
+      ->emailFormat('text');
+    $Email->from(array(Configure::read('site.host_email') => Configure::read('site.name')));
+    $Email->to($this->data['Registrant']['email']);
+    $Email->bcc(Configure::read('site.admin_email'));
+    $Email->subject(Configure::read('site.name') . " Registration: " . $this->data['Registrant']['name']);
+    if (!is_null($id)) {
+      $this->set('registrant',$this->data);
+      $this->render('../Emails/text/default','Emails/text/default');
+      return null;
+    }
+    return $Email;
+  }
 
 
   public function delete($id = null) {

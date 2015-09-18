@@ -52,6 +52,5 @@ function gcal_link($start,$end,$title,$location) {
 <hr/>
 <h1><?php echo $view_title; ?></h1>
 
-<p><?php echo $this->Html->link('List all registrants', array('action' => 'all'), array('id' => 'list-all'));?></p>
 
 <p><?php echo $this->Html->link('Register', array('action' => 'add'), array('class' => 'button', 'id' => 'add-button'));?></p>
