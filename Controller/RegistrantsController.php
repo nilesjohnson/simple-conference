@@ -21,10 +21,11 @@ class RegistrantsController extends AppController {
   public $components = array('Email', 'RequestHandler', 'Session', 'MathCaptcha', 'Security', 'Paginator');
 
   public $paginate = array(
-			   'limit' => 25,
+			   'limit' => 50,
 			   'order' => array(
 					    'Registrant.name' => 'asc'
-					    )
+					    ),
+			   'conditions' => array('Registrant.request_a' => '1')
 			   );
 
 
@@ -82,6 +83,7 @@ class RegistrantsController extends AppController {
     }
     $this->set('view_title','administrator\'s list');
     $this->Paginator->settings = $this->paginate;
+    $this->Paginator->settings['conditions'] = array();
 
     // find database entries
     //$find_array = array('conditions' => $conditions, 'order' => $order_array);    
