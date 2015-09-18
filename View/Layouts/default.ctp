@@ -40,6 +40,10 @@ echo Configure::read('site.analytics');
 </head>
 <body>
 <div id="container">
+  <div id="flashdiv">
+    <?php echo $this->Session->flash(); ?>
+  </div>
+
   <div id="header">
     <h1><?php echo $this->Html->link(Configure::read('site.name'),Configure::read('site.home'));?></h1>
   </div>
@@ -48,21 +52,17 @@ echo Configure::read('site.analytics');
       <?php echo $this->Html->link('Home',array('controller' =>
       'registrants', 'action' => 'index'))?>
       |
+      <?php echo $this->Html->link('Local Information',array('controller' =>
+      'registrants', 'action' => 'local'))?>
+      |
       <?php echo $this->Html->link('Current Registrants',array('controller' =>
      'registrants', 'action' => 'all'))?>
       | 
-      <?php echo $this->Html->link('New Registration',array('controller' =>
-     'registrants', 'action' => 'add'))?>
-
-      <div id="admin_contact">
-	Trouble? Comments? 
-	<?php echo $this->Html->link('Contact ' . Configure::read('site.host_name'),Configure::read('site.host_contact_url'));?>
-      </div>
+      <?php echo $this->Html->link('Organizers',array('controller' =>
+     'registrants', 'action' => 'organizers'))?>
+      &nbsp;&nbsp;
+      <?php if (empty($noRegButton)) {echo $this->Html->link('Register Now!', array('action' => 'add'), array('class' => 'button', 'id' => 'add-button'));}?>
     </div>
-  </div>
-
-  <div id="flashdiv">
-    <?php echo $this->Session->flash(); ?>
   </div>
 
   <!-- view content -->
@@ -72,10 +72,11 @@ echo Configure::read('site.analytics');
   <!-- footer -->
   <div id="footer">
     <!-- footer content -->
-    <div style="text-align: center">
-      <?php echo $this->Html->link(str_replace('http://www.','',Configure::read('site.host')),Configure::read('site.host'));?>
+    <div style="text-align: center;">
+      <?php echo $this->Html->link(str_replace('http://','',Configure::read('site.host')),Configure::read('site.host'), array('target' => 'hosthome'));?>
+      |
+      <?php echo $this->Html->link('simple-conference web app','http://github.com/nilesjohnson/simple-conference',array('target' => 'github')); ?>
     </div>
-  </div>
 </div>
 
 

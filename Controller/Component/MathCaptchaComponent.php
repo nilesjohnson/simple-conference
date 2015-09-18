@@ -81,6 +81,7 @@ class MathCaptchaComponent extends Component {
      */
     public function generateEquation() {
         // Loop through our range of variables and set a random number for each one.
+        $this->variables = array();
         foreach (range(1, $this->settings['numberOfVariables']) as $variable) {
             $this->variables[] = rand($this->settings['minNumber'], $this->settings['maxNumber']);
         }

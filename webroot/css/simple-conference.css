@@ -24,20 +24,25 @@
 }
 
 /** General Style Info **/
+html {
+  background: #ccc;
+  margin: 0;
+  padding: 0; 
+}
 body {
-	background: #003d4c;
-	color: #fff;
+	background: #fff;
+	color: #000;
 	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
 	font-size:12pt;
 	margin: 0;
+	padding: 0;
 }
 a {
-	color: #003d4c;
-	text-decoration: underline;
-	font-weight: bold;
+    color: #000;
+    text-decoration: underline;
+    font-weight: bold;
 }
 a:hover {
-	color: #367889;
 	text-decoration:none;
 }
 a img {
@@ -52,20 +57,14 @@ h2, h3, h4 {
 	margin-top:1em;
 }
 h1 {
-	background:#fff;
-	color: #003d4c;
 }
 h2 {
-	background:#fff;
-	color: #003d4c;
 	font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
 }
 h3 {
-	color: #003d4c;
 	font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
 }
 h4 {
-	color: #003d4c;
 	font-weight: normal;
 }
 ul, li {
@@ -81,33 +80,25 @@ ul, li {
 
 #header{
 	padding: 0;
-	background: #003D4C;
 	//position: fixed;
 	width: 100%;
 	top: 0;
 	z-index: 1;
+	font-size: 120%;
 }
 #header h1 {
-        background: #003d4c /*url('../img/cake.icon.png') no-repeat left*/;
-	color: #fff;
-	padding: 0px 30px;
-	margin-top: .5em;
+	padding: 30px 30px 0 30px;
+	margin: 0;	
 }
 #header a {
-	color: #fff;
-	background: #003d4c;
 	font-weight: normal;
 	text-decoration: none;
 }
 #header a:hover {
-	color: #fff;
-	background: #003d4c;
 	text-decoration: underline;
 }
 #content{
-	background: #fff;
 	clear: both;
-	color: #333;
 	padding: 10px 20px 40px 20px;
 	overflow: auto;
 }
@@ -115,6 +106,8 @@ ul, li {
 	clear: both;
 	padding: 6px 10px;
 	text-align: right;
+	border-top: 2px solid #666;
+	background-color: #ccc;
 }
 
 /** containers **/
@@ -139,7 +132,6 @@ div.actions h3 {
 
 /** Tables **/
 table {
-	background: #fff;
 	border-right:0;
 	clear: both;
 	color: #333;
@@ -164,7 +156,6 @@ th a.desc:after {
 	content: ' ⇡';
 }
 table tr td {
-	background: #fff;
 	padding: 6px;
 	text-align: left;
 	vertical-align: top;
@@ -193,7 +184,6 @@ table td.actions a {
 	font-family: Monaco, Consolas, "Courier New", monospaced;
 }
 .cake-sql-log caption {
-	color:#fff;
 }
 
 /** Paging **/
@@ -567,14 +557,7 @@ p {
 }
 
 #sub_header {
-    background-color: #eee8e0;
-    color: #333;
-    padding: 1ex 3ex;
-    //position: fixed;
-    //top: 60px;
-    //width: 100%;
-    border-bottom: 3px solid #fef8f0;
-    //z-index: 1;
+    padding: 1ex 30px;
 }
 
 #add-button {
@@ -635,49 +618,16 @@ div.subsort0 h2, div.subsort1 h2 {
 h3.title {
     margin-bottom: 1ex;
 }
-div.calendars {
-    display: inline-block;
-    float: right;
-}
-div.calendars a {
-    width: 20px;
-    height: 60px;
-    margin: 0 10px;
-    font-family: "Lucida Sans Narrow","Helvetica Narrow","Arial Narrow","lucida grande",verdana,helvetica,arial,sans-serif;
-    font-size: 90%;
-}
-
-div.dates {
-    float: left;
-    padding-right: 2em;
-}
-
-div.location {
-    display: inline-block;
-    margin-right: 2em;
-}
-
-div.conference_minor, .wmd-preview {
-    background-color:#EEE8E0;
-    border:2px dotted #A1BDC4;
-    font-size:85%;
-    padding:0.5ex 1em;
-}
-
-div.conference_minor p, .wmd-preview p {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-div.conference_minor {
-    display:none;
-}
 
 div.action {
     font-size: 85%;
     padding-bottom: .5ex;
 }
 
+div.flashdiv {
+    float: left;
+    width: 100%;
+}
 div.flash {
     padding: .5ex 2em;
 }
@@ -709,17 +659,6 @@ div#add-message p {
     padding: 1ex;
 }
 
-div.addedit-box {
-    padding: 1pc; 
-    border:1px solid #666; 
-}
-div#basic-info {
-    background-color:#efe;
-}
-div#additional-info {
-    background-color:#eef;
-}
-
 span#niles-email {
     color: #669;
 }
@@ -735,80 +674,23 @@ span#niles-email {
     margin-right: 1.5ex;
 }
 
-div.conference {
-    border-bottom: 1px dashed #cfcfe7;
-    padding-bottom: .5pc;
-    margin-bottom: 1pc;
-}
-
 
 #footer a {
-    color: #fff;
     text-decoration: none;
     font-size: 90%;
 }
 
 /* Add form */
 
-div.datefield {
-    display: inline-block;
-    width: auto;
+div.addedit-box {
+    padding: 1pc; 
+    border:1px solid #666; 
+}
+div#basic-info {
+    background-color:#efe;
+}
+div#additional-info {
+    background-color:#eef;
 }
 
-#ConferenceStartDate, #ConferenceEndDate {
-    width: 13ex;
-    display: block;
-}
 
-.trigger:hover {
-    cursor: pointer;
-}
-
-/* Cc Data Div */
-
-#ccdatadiv {
-    width: 70%; 
-    margin-left: 10%; 
-    background-color: #E3EBF7;
-}
-
-#ccdata-toggle {
-    text-align:center;
-    font-weight: bold;
-    margin: 0;
-}
-
-#ccdatadiv h4 a {
-    text-decoration: none;
-}
-
-#ccdatadiv .subtitle {
-    margin: 0;
-}
-
-#ccdatadiv p {
-    margin: 1pc 0;
-    line-height: 160%;
-}
-
-#ccdata {
-    margin: 0;
-    padding: 0;
-}
-
-#ccdatadiv .input {
-    padding: .5em 2.5%;
-    width: 92%;
-}
-
-#ccdatadiv ul {
-    list-style-type: none;
-}
-
-#ccdatadiv ul, #ccdatadiv ul li a {
-    font-weight: normal;
-}
-
-#ccdatadiv input, #ccdatadiv textarea {
-    font-family: monospace;
-}

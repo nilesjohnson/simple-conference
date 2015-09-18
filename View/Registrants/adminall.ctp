@@ -1,5 +1,7 @@
 <h1><?php echo $view_title; ?></h1>
 
+<p>There are <?php echo count($registrants);?> registrants.</p>
+
 
 
 <?php 

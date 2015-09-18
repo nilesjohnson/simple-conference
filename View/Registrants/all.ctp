@@ -1,6 +1,6 @@
 <h1><?php echo $view_title; ?></h1>
 
-
+<p>There are <?php echo $regCount;?> total registrants.  Public registrants are listed below.</p>
 
 <?php 
 $site_url = Configure::read('site.home');

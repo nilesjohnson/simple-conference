@@ -32,7 +32,9 @@ echo '</div>';
 
 
 <?php
-echo $this->Form->end('Submit');
+$buttonText = isset($edit)? 'Update Registration':'Submit Registration';
+echo $this->Form->submit($buttonText, array('class' => 'button', 'id' => 'add-button', 'style' => 'font-size:180%'));
+echo $this->Form->end();
 
 if (isset($edit)) {
 echo '</div>';

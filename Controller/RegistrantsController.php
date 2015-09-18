@@ -60,6 +60,14 @@ class RegistrantsController extends AppController {
     $this->set('view_title','index');
   }
 
+  public function local($s=Null) {
+    $this->set('view_title','local');
+  }
+
+  public function organizers($s=Null) {
+    $this->set('view_title','organizers');
+  }
+
   public function all($sort_condition=Null) {
     // show all registrants
     $this->set('view_title','current registrants');
@@ -67,6 +75,7 @@ class RegistrantsController extends AppController {
 
     // find database entries
     //$find_array = array('conditions' => $conditions, 'order' => $order_array);    
+    $this->set('regCount', count($this->Registrant->find('all')));
     $this->set('registrants', $this->Paginator->paginate('Registrant'));
 
     // process RSS feed      
@@ -87,7 +96,7 @@ class RegistrantsController extends AppController {
 
     // find database entries
     //$find_array = array('conditions' => $conditions, 'order' => $order_array);    
-    $this->set('registrants', $this->Paginator->paginate('Registrant'));
+     $this->set('registrants', $this->Paginator->paginate('Registrant'));
 
     // process RSS feed      
     if( $this->RequestHandler->isRss() ){
@@ -108,43 +117,28 @@ class RegistrantsController extends AppController {
 
 
   public function add() {
+    $this->set('noRegButton',1);
     $this->set('view_title', 'Add');
     if (!empty($this->data)) {
       // set model data
       debug($this->data);  //displays array info
       $this->Registrant->set($this->data);
-
-      // test whether registrant data validates
-      $valid_data = true;
-      // check for invalid registrant data
-      if (!($this->Registrant->validates($this->data['Registrant']))) {
-	debug($this->Registrant->validationErrors); //displays array info
-	foreach (Set::flatten($this->Registrant->validationErrors) as $field => $message) {
-	  $this->Registrant->invalidate($field,$message);
-	}
-	$this->Session->setFlash('Please check for errors below.', 'FlashBad');
-	$valid_data = false;
-      }      
-
-      // after registrant data validates, check for valid captcha
-      if ($valid_data && $this->MathCaptcha->validates($this->data['Registrant']['captcha'])) {
-	// all good!
+      // continue on with validation
+      if ($this->doValidation()) {
 	$this->saveAndSend();
       }
-      // else: something invalid
       else {
-	$this->Registrant->invalidate('captcha','Please perform the indicated arithmetic.');
-	$this->Session->setFlash('Please check for errors below.', 'FlashBad');
+	$this->set('mathCaptcha', $this->MathCaptcha->generateEquation());
+	$this->render('addedit');
       }
-      $this->render('addedit');
     }
-
     // if there is no data: generate a fresh form
     $this->set('mathCaptcha', $this->MathCaptcha->generateEquation());
     $this->render('addedit');
   }
 
   public function edit($id = null, $key = null) {
+    $this->set('noRegButton',1);
     if (!$this->Registrant->exists($id)) {
       throw new NotFoundException(__('Invalid registrant'));
     }
@@ -168,6 +162,7 @@ class RegistrantsController extends AppController {
     } 
     else {
       // check that given key matches key from database
+      $this->Registrant->set($this->data);
       $prev = $this->Registrant->find('first', array(
           'conditions' => array('Registrant.id' => $id)
       ));
@@ -175,19 +170,44 @@ class RegistrantsController extends AppController {
         $this->Session->SetFlash('Invalid edit key. (1)','FlashBad');
         $this->redirect(array('action' => 'index'));
       }
-      // all good!
-      $this->saveAndSend();
+      // continue on with validation
+      if ($this->doValidation()) {
+	$this->saveAndSend();
+      }
+      else {
+	$this->set('mathCaptcha', $this->MathCaptcha->generateEquation());
+	$this->render('addedit');
+      }
     }
   }
   
+  public function doValidation() {
+    // test whether registrant data validates
+    $valid_data = true;
+    // check for invalid registrant data
+    if (!($this->Registrant->validates($this->data['Registrant']))) {
+      debug($this->Registrant->validationErrors); //displays array info
+      $valid_data = false;
+    }      
 
+    // also check for valid captcha
+    if ($valid_data && $this->MathCaptcha->validates($this->data['Registrant']['captcha'])) {
+      return true;
+    }
+
+    foreach (Set::flatten($this->Registrant->validationErrors) as $field => $message) {
+      $this->Registrant->invalidate($field,$message);
+    }
+    $this->Session->setFlash('Please check for errors below.', 'FlashBad');
+    $this->Registrant->invalidate('captcha','Please perform the indicated arithmetic.');
+    return false;
+  }
 
   public function saveAndSend() {
     /*
-     * helper function to save data and send email
+     * helper function to validate, save data and send email
      * ends with redirect
      */
-    // change any 2-digit years in start/end dates to 4-digit years
     
     // verify that all data saves, and send email(s)
     if ($this->Registrant->save($this->data)) {
@@ -197,8 +217,10 @@ class RegistrantsController extends AppController {
       $this->Session->setFlash('Your registration information has been saved.  An email with edit/delete links has been sent to the contact address.', 'FlashGood');
       $this->redirect(array('action' => 'index'));
     } 
+    // else: don't know
     else {
-      $this->Session->setFlash('There was an error saving the data.  Please re-register.','FlashBad');
+      $this->Session->setFlash('There was an error saving your data.  Please retry or contact the organizers.', 'FlashBad');
+      $this->redirect(array('action' => 'index'));  
     }
   }
 
