@@ -559,7 +559,7 @@ div.code-coverage-results span.result-good {
 }
 
 
-/* AlgTop_conf specific */
+/* simple-conference specific */
 
 p {
     margin-bottom: 1pc;
@@ -707,6 +707,17 @@ div#add-message {
 
 div#add-message p {
     padding: 1ex;
+}
+
+div.addedit-box {
+    padding: 1pc; 
+    border:1px solid #666; 
+}
+div#basic-info {
+    background-color:#efe;
+}
+div#additional-info {
+    background-color:#eef;
 }
 
 span#niles-email {
