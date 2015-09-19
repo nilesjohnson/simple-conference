@@ -1,4 +1,4 @@
-<h1><?php echo $view_title; ?></h1>
+<h1>Current Registrants</h1>
 
 <p>There are <?php echo $regCount;?> total registrants.  Public registrants are listed below.</p>
 
@@ -7,6 +7,7 @@ $site_url = Configure::read('site.home');
 $site_name = Configure::read('site.name');
 //debug($registrants[0]);
 ?>
+
 <table>
     <tr>
         <th width="33%"><?php echo $this->Paginator->sort('last_name', 'Name/Webpage'); ?></th>
