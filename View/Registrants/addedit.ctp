@@ -14,16 +14,19 @@ if (isset($edit)){
 
 echo '<h2>Basic Information</h2>';
 echo '<div id="basic-info" class="addedit-box">';
+echo $this->Form->input('date', array('type'=>'hidden'));
+echo $this->Form->input('first_name', array('type'=>'hidden'));
+echo $this->Form->input('last_name', array('type'=>'hidden'));
 echo $this->Form->input('name');
 echo $this->Form->input('webpage', array('required' => false));
 echo $this->Form->input('affiliation');
-echo $this->Form->input('request_a', array('label' => 'Display basic info (name, webpage, affiliation) on public list of registrants.', 'default' => true));
+echo $this->Form->input('request_pub', array('label' => 'Display basic info (name, webpage, affiliation) on public list of registrants.', 'default' => true));
 echo '</div>';
 
 echo '<h2>Additional Information</h2>';
 echo '<div id="additional-info" class="addedit-box">';
 echo $this->Form->input('email', array('after'=>'Never displayed publicly.  Confirmation and other correspondence will be sent to this address.'));
-echo $this->Form->input('request_b', array('label' => 'Request funding.  If you request funding, please use the comment section to say whether you are a graduate student, postdoc, etc., and any other relevant information.'));
+echo $this->Form->input('request_fund', array('label' => 'Request funding.  If you request funding, please use the comment section to say whether you are a graduate student, postdoc, etc., and any other relevant information.'));
 echo $this->Form->input('comment', array('rows' => '10'));
 echo $this->Form->input('captcha', array('label' => 'Please Enter the Sum of ' . $mathCaptcha, 'after'=>'anti-spam'));
 echo '</div>';

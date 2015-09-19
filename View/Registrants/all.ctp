@@ -5,11 +5,11 @@
 <?php 
 $site_url = Configure::read('site.home');
 $site_name = Configure::read('site.name');
-debug($registrants[0]);
+//debug($registrants[0]);
 ?>
 <table>
     <tr>
-        <th width="33%"><?php echo $this->Paginator->sort('name', 'Name/Webpage'); ?></th>
+        <th width="33%"><?php echo $this->Paginator->sort('last_name', 'Name/Webpage'); ?></th>
         <th><?php echo $this->Paginator->sort('affiliation', 'Affiliation'); ?></th>
     </tr>
        <?php foreach ($registrants as $registrant): 

@@ -23,9 +23,10 @@ class RegistrantsController extends AppController {
   public $paginate = array(
 			   'limit' => 50,
 			   'order' => array(
-					    'Registrant.name' => 'asc'
+					    'Registrant.last_name' => 'asc',
+					    'Registrant.first_name' => 'asc'
 					    ),
-			   'conditions' => array('Registrant.request_a' => '1')
+			   'conditions' => array('Registrant.request_pub' => '1')
 			   );
 
 
@@ -121,7 +122,7 @@ class RegistrantsController extends AppController {
     $this->set('view_title', 'Add');
     if (!empty($this->data)) {
       // set model data
-      debug($this->data);  //displays array info
+      //debug($this->data);  //displays array info
       $this->Registrant->set($this->data);
       // continue on with validation
       if ($this->doValidation()) {
@@ -186,7 +187,7 @@ class RegistrantsController extends AppController {
     $valid_data = true;
     // check for invalid registrant data
     if (!($this->Registrant->validates($this->data['Registrant']))) {
-      debug($this->Registrant->validationErrors); //displays array info
+      //debug($this->Registrant->validationErrors); //displays array info
       $valid_data = false;
     }      
 

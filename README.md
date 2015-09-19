@@ -67,32 +67,26 @@ Then there are five basic configuration steps necessary to get the app running:
 1. Update the rest of the settings in the private configuration file 
 from step 2.
 
-1. Create the necessary database table and (optionally) initial data 
-for testing.  This can be done with the following MySQL commands (see `db_create_2.php`):
+1. Create the necessary database table.  This can be done with the following MySQL commands (see `db_create_2.php`):
 
 
         CREATE TABLE registrants (
         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         date DATE,
         edit_key VARCHAR(10),
-        name VARCHAR(200),
-        email VARCHAR(100),
+        first_name VARCHAR(200),
+        last_name VARCHAR(200),
+        email VARCHAR(200),
         affiliation VARCHAR(200),
         webpage VARCHAR(400),
+        request_pub TINYINT(1),
+        request_fund TINYINT(1),
         request_a TINYINT(1),
         request_b TINYINT(1),
         request_c TINYINT(1),
         comment TEXT
         );
 
-
-
-
-        INSERT INTO registrants (date, edit_key, name, email, affiliation, webpage, request_a, request_b, request_c, comment)
-        VALUES 
-          (2100-06-01, 'editkey', 'Test Registrant 1', 'test@example.com', 'BigState University', 'http://example.com', 1, 0, 1, 'I am looking forward to this conference!'),
-          (2100-08-01, 'editkey', 'Test Registrant 2', 'test@example.com', 'SmallState University', 'http://example.com', 1, 1, 1, 'I am looking forward to this conference!'),
-          (2100-10-01, 'editkey', 'Test Registrant 3', 'test@example.com', 'JustRight University', 'http://example.com', 0, 0, 1, 'I am looking forward to this conference!');"
 
 
 

@@ -44,14 +44,14 @@ echo "Name: ".$registrant['Registrant']['name']."\n";
 echo "Webpage: ".$registrant['Registrant']['webpage']."\n";
 echo "Affiliation: ".$registrant['Registrant']['affiliation']."\n";
 echo "List basic info publicly: ";
-echo $registrant['Registrant']['request_a'] ? 'true':'false';
+echo $registrant['Registrant']['request_pub'] ? 'true':'false';
 echo "\n\n";
 
 echo "Additional Information\n";
 echo "----\n";
 echo "Email: ".$registrant['Registrant']['email']."\n";
 echo "Request funding: ";
-echo $registrant['Registrant']['request_b'] ? 'true':'false';
+echo $registrant['Registrant']['request_fund'] ? 'true':'false';
 echo "\n";
 echo "Comment:\n";
 echo $registrant['Registrant']['comment']."\n";
