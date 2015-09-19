@@ -343,6 +343,10 @@ form .submit input[type=submit]:hover,
 	background: -webkit-gradient(linear, left top, left bottom, from(#85e573), to(#4ca83d));
 	background-image: -moz-linear-gradient(top, #85e573, #4ca83d);
 }
+a#add-button:hover {
+	text-decoration: none;
+	color: #303;
+}
 
 /** Notices and Errors **/
 div.message {
