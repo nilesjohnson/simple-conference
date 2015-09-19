@@ -33,14 +33,12 @@ body {
 	background: #fff;
 	color: #000;
 	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
-	font-size:12pt;
-	margin: 0;
-	padding: 0;
+	font-size:21px;
 }
 a {
     color: #000;
     text-decoration: underline;
-    font-weight: bold;
+    //font-weight: bold;
 }
 a:hover {
 	text-decoration:none;
@@ -68,7 +66,7 @@ h4 {
 	font-weight: normal;
 }
 ul, li {
-	margin: 0 12px;
+	margin: 0 1em;
 }
 
 /** Layout **/
@@ -79,19 +77,20 @@ ul, li {
 }
 
 #header{
-	padding: 0;
+	padding: 1em 1em;
 	//position: fixed;
 	width: 100%;
 	top: 0;
 	z-index: 1;
-	font-size: 120%;
+	line-height: 50px;
+	//font-size: 120%;
 }
 #header h1 {
-	padding: 30px 30px 0 30px;
-	margin: 0;	
+	padding: 0;
+	margin: 0;
+	font-weight: bold;
 }
 #header a {
-	font-weight: normal;
 	text-decoration: none;
 }
 #header a:hover {
@@ -99,12 +98,12 @@ ul, li {
 }
 #content{
 	clear: both;
-	padding: 10px 20px 40px 20px;
+	padding: 1em 2em;
 	overflow: auto;
 }
 #footer {
 	clear: both;
-	padding: 6px 10px;
+	padding: .5em 0;
 	text-align: right;
 	border-top: 2px solid #666;
 	background-color: #ccc;
@@ -225,7 +224,6 @@ dd {
 /** Forms **/
 form {
 	clear: both;
-	margin-right: 20px;
 	padding: 0;
 	width: 95%;
 }
@@ -263,7 +261,6 @@ fieldset fieldset div {
 	width: 100%;
 }
 form {
-	padding: .5em;
 }
 form .input {
 	color: #444;
@@ -555,9 +552,13 @@ p {
     margin-bottom: 1pc;
     margin-top: 1pc;
 }
-
 #sub_header {
-    padding: 1ex 30px;
+    color: #666;
+}
+#sub_header a {
+    //padding: 1ex 30px;
+    font-weight: normal;
+    color: #292929;
 }
 
 #add-button {
@@ -584,35 +585,6 @@ h2.target {
     float: right;
     margin-right: 3em;
     display: inline-block;
-}
-
-.intro_text {
-    padding-bottom: 1em;
-}
-.intro_text p {
-    margin: .8em;
-    line-height: 120%;
-}
-
-div.subsort0 {
-}
-div.subsort0 h2, div.subsort1 h2 {
-    padding: .2ex 0 .2ex 2ex;
-    background-color: #EFEFF7;
-    border-top: 1.5px solid #88a;
-}
-.subject-tags {
-    margin:5px;
-}
-.tag {
-    font-size:80%;
-    background-color:#efe;
-    padding:2px;
-    margin:3px;
-    border: 1px solid #9a9;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
 }
 
 h3.title {
@@ -678,6 +650,7 @@ span#niles-email {
 #footer a {
     text-decoration: none;
     font-size: 90%;
+    font-weight: bold;
 }
 
 /* Add form */

@@ -13,22 +13,6 @@ echo $this->Html->meta(
 
 echo $this->Html->css('simple-conference') ."\n";
 
-// social buttons
-echo $this->Html->script('social');
-
-// jquery core
-//echo $this->Html->script('//code.jquery.com/jquery-1.10.2.min.js') ."\n";
-
-// datepicker
-//echo $this->Html->css('//code.jquery.com/ui/1.11.1/themes/redmond/jquery-ui.css')."\n";
-//echo $this->Html->script('//code.jquery.com/ui/1.11.1/jquery-ui.js') ."\n";
-//echo $this->Html->script('datepicker') ."\n";  //configuration for conflist app
-
-
-// select2
-//echo $this->Html->css('http://cdn.jsdelivr.net/select2/3.4.8/select2.css') ."\n";
-//echo $this->Html->script('http://cdn.jsdelivr.net/select2/3.4.8/select2.min.js') ."\n"; 
-//echo $this->Html->script('select2_fields') ."\n";  //configuration for conflist app
 
 echo $this->fetch('meta');
 echo $this->fetch('css');
@@ -46,7 +30,6 @@ echo Configure::read('site.analytics');
 
   <div id="header">
     <h1><?php echo $this->Html->link(Configure::read('site.name'),Configure::read('site.home'));?></h1>
-  </div>
   <div id="sub_header">
     <div id="menu">
       <?php echo $this->Html->link('Home',array('controller' =>
@@ -61,8 +44,9 @@ echo Configure::read('site.analytics');
       <?php echo $this->Html->link('Organizers',array('controller' =>
      'registrants', 'action' => 'organizers'))?>
       &nbsp;&nbsp;
-      <?php if (empty($noRegButton)) {echo $this->Html->link('Register Now!', array('action' => 'add'), array('class' => 'button', 'id' => 'add-button'));}?>
+      <?php if (empty($noRegButton)) {echo $this->Html->link('Register&nbsp;Now!', array('action' => 'add'), array('class' => 'button', 'id' => 'add-button', 'escape' => false));}?>
     </div>
+  </div>
   </div>
 
   <!-- view content -->
