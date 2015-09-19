@@ -5,6 +5,7 @@
 <?php 
 $site_url = Configure::read('site.home');
 $site_name = Configure::read('site.name');
+debug($registrants[0]);
 ?>
 <table>
     <tr>

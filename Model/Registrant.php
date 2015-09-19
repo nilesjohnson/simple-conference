@@ -52,7 +52,21 @@ class Registrant extends AppModel {
 
   public $displayField = 'name';
   public $name = 'Registrant';
-
+  /*  public $virtualFields = array(
+				'first_name' => 
+	"IF(
+	LOCATE(' ', Registrant.name) > 0,
+	SUBSTRING(Registrant.name, 1, LOCATE(' ', Registrant.name) - 1),
+        Registrant.name
+        )",
+				'last_name' =>
+        "IF(
+        LOCATE(' ', Registrant.name) > 0,
+        SUBSTRING(Registrant.name, LOCATE(' ', Registrant.name) + 1),
+        NULL
+        )",
+				);
+  */
   public $validate = array(
 			   'name' => array(
 					   'rule' => 'notEmpty'
