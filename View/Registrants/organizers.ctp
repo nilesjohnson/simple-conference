@@ -12,6 +12,8 @@
   Niles Johnson</a></li>
 <li><a href="https://people.math.osu.edu/lafont.1/" target="organizer">
   Jean-François Lafont</a></li>
+<li><a href="http://math.osu.edu/people/ogle.1" target="organizer">
+  Crichton Ogle</a></li>
 <li><a href="https://people.math.osu.edu/rao.3/" target="organizer">
   Vidhyanath Rao</a></li>
 <li><a href="http://u.osu.edu/yau.22/main/" target="organizer">
