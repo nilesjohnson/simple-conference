@@ -98,7 +98,7 @@ ul, li {
 }
 #content{
 	clear: both;
-	padding: 1em 2em;
+	padding: 1em 1em;
 	overflow: auto;
 }
 #footer {
