@@ -12,12 +12,15 @@ The Ohio State University</h2>
 <p><span class="time">10:00 &ndash; 11:00</span>
   <a href="http://math.uchicago.edu/~limbeek/" target="speaker">Wouter van Limbeek</a> (Chicago)</p>
 <p><span class="time">11:15 &ndash; 12:15</span>
-  <a href="http://www.math.ucla.edu/~mjandr/" target="speaker">Michael Andrews</a> (UCLA)</p>
+  <a href="http://www.math.jhu.edu/~eriehl/" target="speaker">Emily Riehl</a> (Johns Hopkins)</p>
 <p><span class="time">2:00 &ndash; 3:00</span>
   <a href="http://pages.iu.edu/~alindens/" target="speaker">Ayelet Lindenstrauss</a> (Indiana)</p>
 <p><span class="time">3:30 &ndash; 4:30</span>
-  <a href="http://www.math.jhu.edu/~eriehl/" target="speaker">Emily Riehl</a> (Johns Hopkins)</p>
+  <a href="http://www.math.ucla.edu/~mjandr/" target="speaker">Michael Andrews</a> (UCLA)</p>
 
 <h2>Registration</h2>
 
-<p>Help us plan by registering at the link above.</p>
+<p>We have funding to support graduate students and young faculty.
+Please register by <em>Sunday, March 13</em> for full consideration of
+funding.  Even if you don't request support, your registration will
+help us plan.</p>
