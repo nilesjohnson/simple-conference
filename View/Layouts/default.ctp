@@ -53,6 +53,9 @@ echo Configure::read('site.analytics');
   <div id="content">
     <?php echo $this->fetch('content'); ?>
   </div>
+    <div style="text-align:left; padding:1em 1em"><p>This meeting is funded with support from the <a href="http://math.osu.edu/mri" target="mri">Mathematics Research Institute</a> and the <a href="http://nsf.gov" target="nsf">National Science Foundation</a>.</p>
+    </div>
+
   <!-- footer -->
   <div id="footer">
     <!-- footer content -->
