@@ -1,6 +1,6 @@
 <h2>Saturday, May 14, 2016<br />
 The Ohio State University</h2>
-<p><em>Note the new date!</em></p>
+
 
 <p><a href="https://www.google.com/maps/place/231+W+18th+Ave,+Columbus,+OH+43210/@40.0015361,-83.0143837" target="map">231 W 18th Ave<br />Columbus, OH 43210-1174</a></p>
 

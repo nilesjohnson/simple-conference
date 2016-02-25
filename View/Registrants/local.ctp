@@ -1,8 +1,5 @@
 <h1>Local Information</h1>
 
-<p>This page contains local information (TBA).  We are arranging a block of hotel rooms and a map of local restaurants.  When it is available, we will post it here and email the registered participants.</p>
-
-<h2>Travel</h2>
 
 <h2>Lodging</h2>
 
@@ -18,7 +15,11 @@ Phone: 614-268-8700
 </p>
 
 
-<h2>Maps</h2>
+<h2>Map</h2>
+
+<iframe src="https://www.google.com/maps/d/embed?mid=zf5pV-uArOKw.k6VCSJ4lJYdc" width="640" height="480"></iframe>
+
 
 <h2>Restaurants</h2>
 
+<p>Many restaurants can be found on High Street.  A list of recommendations is coming soon!</p>
