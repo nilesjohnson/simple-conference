@@ -10,7 +10,7 @@ The Ohio State University</h2>
 <p><span class="time">9:00 &ndash; 10:00</span> 
   Coffee</p>
 <p><span class="time">10:00 &ndash; 11:00</span>
-  <a href="http://math.uchicago.edu/~limbeek/" target="speaker">Wouter van Limbeek</a> (Chicago)</p>
+  <a href="http://www-personal.umich.edu/~wouterv/" target="speaker">Wouter van Limbeek</a> (Michigan)</p>
 <p><span class="time">11:15 &ndash; 12:15</span>
   <a href="http://www.math.jhu.edu/~eriehl/" target="speaker">Emily Riehl</a> (Johns Hopkins)</p>
 <p><span class="time">2:00 &ndash; 3:00</span>
