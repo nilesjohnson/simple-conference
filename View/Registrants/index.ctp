@@ -16,7 +16,7 @@ The Ohio State University</h2>
 <p><span class="time">2:00 &ndash; 3:00</span>
   <a href="http://pages.iu.edu/~alindens/" target="speaker">Ayelet Lindenstrauss</a> (Indiana)</p>
 <p><span class="time">3:30 &ndash; 4:30</span>
-  <a href="http://www.math.ucla.edu/~mjandr/" target="speaker">Michael Andrews</a> (UCLA)</p>
+  <a href="http://www.math.ucla.edu/~mjandr/" target="speaker">Michael Ching</a> (Amherst)</p>
 
 <h2>Registration</h2>
 
