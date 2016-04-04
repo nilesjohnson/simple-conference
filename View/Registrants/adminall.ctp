@@ -1,6 +1,6 @@
 <h1>Administrator's List</h1>
 
-<p>There are <?php echo count($registrants);?> registrants.</p>
+<p>There are <?php echo $regCount;?> total registrants.</p>
 
 
 
@@ -39,3 +39,31 @@ $site_name = Configure::read('site.name');
 </table>
 
 
+<?php
+// prints X of Y, where X is current page and Y is number of pages
+echo "<p>Page ".$this->Paginator->counter()."</p>";
+?>
+
+
+<table class="paginator-controls">
+<tr>
+<?php
+
+echo "<td>".$this->Paginator->prev(
+  '« Previous',
+  null,
+  null,
+  array('class' => 'disabled')
+)."</td>";
+
+echo "<td>".$this->Paginator->numbers()."</td>";
+
+echo "<td>".$this->Paginator->next(
+  'Next »',
+  null,
+  null,
+  array('class' => 'disabled')
+)."</td>";
+?>
+</tr>
+</table>

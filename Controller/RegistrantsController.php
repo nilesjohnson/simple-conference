@@ -21,7 +21,7 @@ class RegistrantsController extends AppController {
   public $components = array('Email', 'RequestHandler', 'Session', 'MathCaptcha', 'Security', 'Paginator');
 
   public $paginate = array(
-			   'limit' => 50,
+			   'limit' => 100,
 			   'order' => array(
 					    'Registrant.last_name' => 'asc',
 					    'Registrant.first_name' => 'asc'
@@ -97,7 +97,8 @@ class RegistrantsController extends AppController {
 
     // find database entries
     //$find_array = array('conditions' => $conditions, 'order' => $order_array);    
-     $this->set('registrants', $this->Paginator->paginate('Registrant'));
+    $this->set('regCount', count($this->Registrant->find('all')));
+    $this->set('registrants', $this->Paginator->paginate('Registrant'));
 
     // process RSS feed      
     if( $this->RequestHandler->isRss() ){
