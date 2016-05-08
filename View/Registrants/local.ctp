@@ -23,4 +23,4 @@ target="hampton">Hampton Inn and Suites Columbus University Area</a><br />
 
 <h2>Restaurants</h2>
 
-<p>Columbus has vibrant local food options and a range of international cuisines.  Many good options can be found on High Street near campus, closer to downtown in the Short North, or further South in German Vilalge.  We've marked a few on the map, and a web search will turn up many others to suit your taste.</p>
+<p>Columbus has vibrant local food options and a range of international cuisines.  Many good options can be found on High Street near campus, closer to downtown in the Short North, or further South in German Village.  We've marked a few on the map, and a web search will turn up many others to suit your taste.</p>
