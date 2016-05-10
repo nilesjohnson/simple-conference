@@ -1,12 +1,13 @@
 <h2>Saturday, May 14, 2016<br />
 The Ohio State University</h2>
 
+<h2>Eighteenth Avenue Building: <a href="https://www.osu.edu/map/google.php?buildingIn=004" target="map">EA 106</a></h2>
 
-<p><a href="https://www.google.com/maps/place/231+W+18th+Ave,+Columbus,+OH+43210/@40.0015361,-83.0143837" target="map">231 W 18th Ave<br />Columbus, OH 43210-1174</a></p>
+<p><a href="https://www.google.com/maps/place/209+W+18th+Ave,+Columbus,+OH+43210/@40.0015582,-83.0163467" target="map">209 W 18th Ave<br />Columbus, OH 43210-1174</a></p>
 
 <h2>Schedule</h2>
 
-
+<p>All refreshements and talks in <a href="https://www.osu.edu/map/google.php?buildingIn=004" target="map">EA 106</a></p>
 <p><span class="time">9:00 &ndash; 10:00</span> 
   Coffee</p>
 <p><span class="time">10:00 &ndash; 11:00</span>
