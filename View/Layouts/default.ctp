@@ -44,7 +44,9 @@ echo Configure::read('site.analytics');
       <?php echo $this->Html->link('Organizers',array('controller' =>
      'registrants', 'action' => 'organizers'))?>
       &nbsp;&nbsp;
+<!--
       <?php if (empty($noRegButton)) {echo $this->Html->link('Register&nbsp;Now!', array('action' => 'add'), array('class' => 'button', 'id' => 'add-button', 'escape' => false));}?>
+-->
     </div>
   </div>
   </div>

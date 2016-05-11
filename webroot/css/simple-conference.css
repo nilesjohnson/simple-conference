@@ -58,6 +58,7 @@ h1 {
 }
 h2 {
 	font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
+	font-weight: 600;
 }
 h3 {
 	font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
@@ -67,6 +68,14 @@ h4 {
 }
 ul, li {
 	margin: 0 1em;
+}
+
+.time {
+    font-weight: 600;
+}
+
+.title, .abstract {
+    padding: 0 2ex;
 }
 
 /** Layout **/

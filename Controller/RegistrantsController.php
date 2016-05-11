@@ -61,6 +61,10 @@ class RegistrantsController extends AppController {
     $this->set('view_title','index');
   }
 
+  public function abstracts($s=Null) {
+    $this->set('view_title','abstracts');
+  }
+
   public function local($s=Null) {
     $this->set('view_title','local');
   }
