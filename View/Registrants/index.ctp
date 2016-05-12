@@ -7,7 +7,7 @@ The Ohio State University</h2>
 
 <h2>Schedule</h2>
 
-<p>All refreshements and talks in <a href="https://www.osu.edu/map/google.php?buildingIn=004" target="map">EA 106</a></p>
+<p>All refreshements and talks in <a href="https://www.osu.edu/map/google.php?buildingIn=004" target="map">EA 160</a></p>
 <p><span class="time">9:00 &ndash; 10:00</span> 
   Coffee</p>
 
