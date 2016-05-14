@@ -7,9 +7,9 @@ The Ohio State University</h2>
 
 <h2>Schedule</h2>
 
-<p>All refreshements and talks in <a href="https://www.osu.edu/map/google.php?buildingIn=004" target="map">EA 160</a></p>
-<p><span class="time">9:00 &ndash; 10:00</span> 
-  Coffee</p>
+<p>All refreshments and talks in <a href="https://www.osu.edu/map/google.php?buildingIn=004" target="map">EA 160</a></p>
+<h3><span class="time">9:00 &ndash; 10:00</span> 
+  Coffee, bagels, fruit</h3>
 
 
 
@@ -55,6 +55,9 @@ internally to the homotopy 2-category and its associated
 </p>
 
 
+
+<h3><span class="time">1:30 &ndash; 2:00</span> 
+  Coffee II</h3>
 
 
 <h3><span class="time">2:00 &ndash; 3:00</span>

@@ -1,6 +1,14 @@
 <h1>Local Information</h1>
 
 
+<h2>Parking</h2>
+
+<p>The best parking for the day will be the <a
+href="https://www.google.com/maps/place/Tuttle+Garage/@40.0025613,-83.0168465,17"
+target="map">Tuttle Park Place Garage</a>.  It is a short walk from
+the Eighteenth Avenue building where the talks will be held (see map
+below).  Weekend rate for the day is $7.</p>
+
 <h2>Lodging</h2>
 
 <p> We have reserved a block of rooms at the Hampton Inn at a reduced rate of 

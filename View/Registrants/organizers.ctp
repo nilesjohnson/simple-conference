@@ -16,6 +16,8 @@
   Crichton Ogle</a></li>
 <li><a href="https://people.math.osu.edu/rao.3/" target="organizer">
   Nath Rao</a></li>
+<li><a href="http://math.osu.edu/people/valenzuela.12" target="organizer">
+  Gabriel Valenzuela</a></li>
 <li><a href="http://u.osu.edu/yau.22/main/" target="organizer">
   Donald Yau</a></li>
 </ul>
